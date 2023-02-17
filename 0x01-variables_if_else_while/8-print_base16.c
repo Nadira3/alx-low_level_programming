@@ -1,4 +1,3 @@
-
 #include <stdio.h>
 /**
  * main - entry point of the program
@@ -13,7 +12,7 @@ int main(void)
 		putchar(x + '0');
 		x++;
 	}
-	while (y < 102)
+	while (y < 103)
 	{
 		putchar(y);
 		y++;
