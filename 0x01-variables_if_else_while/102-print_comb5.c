@@ -20,8 +20,11 @@ int main(void)
 			putchar(' ');
 			putchar(c + '0');
 			putchar(a + '0');
-			putchar(',');
-			putchar(' ');
+			if (d != 98 && y != 99)
+			{
+				putchar(',');
+				putchar(' ');
+			}
 		}
 		x++;
 	}
