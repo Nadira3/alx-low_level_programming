@@ -20,5 +20,6 @@ int main(void)
 		else
 			printf("%lu", T[i]);
 	}
+	printf("\n");
 	return (0);
 }

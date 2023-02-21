@@ -6,11 +6,11 @@
 int main(void)
 {
 	int i;
+	unsigned long sumeven;
 	unsigned long T[50];
-
 	T[0] = 1;
 	T[1] = 2;
-	unsigned long sumeven = T[1];
+	sumeven= T[1];
 
 	for (i = 2; T[i] < 4000000; i++)
 	{
