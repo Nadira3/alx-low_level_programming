@@ -15,10 +15,10 @@ int main(void)
 	for (i = 2; i < 98; i++)
 	{
 		T[i] = T[i - 2] + T[i - 1];
-		if (i < 97)
+		/* if (i < 97)
 			printf("%lu, ", T[i]);
-		else
-			printf("%lu", T[i]);
+		else */
+			printf("%lu", T[3]);
 	}
 	printf("\n");
 	return (0);
