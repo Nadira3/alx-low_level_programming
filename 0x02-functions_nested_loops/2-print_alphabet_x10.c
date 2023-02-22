@@ -1,6 +1,6 @@
 #include "main.h"
 /**
- * main - prints all the alphabets in lowercase
+ * print_alphabet_x10 - prints all the alphabets in lowercase
  * Return: 0
  */
 void print_alphabet_x10(void)
@@ -10,6 +10,7 @@ void print_alphabet_x10(void)
 	while (i < 10)
 	{
 		int j = 97;
+
 		while (j < 123)
 		{
 			_putchar(j);
