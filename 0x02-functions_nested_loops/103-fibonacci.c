@@ -6,10 +6,10 @@
 int main(void)
 {
 	int i;
+	unsigned long sum = 2;
 	unsigned long T[50];
 	T[0] = 1;
 	T[1] = 2;
-	unsigned long sum = T[1];
 
 	for (i = 2; i < 50; i++)
 	{
