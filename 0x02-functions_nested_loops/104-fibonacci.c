@@ -19,5 +19,6 @@ int main(void)
 		else
 			printf("%.0Lf", T[i]);
 	}
+	printf("\n");
 	return (0);
 }
