@@ -8,6 +8,7 @@ int main(void)
 	int i;
 	unsigned long sum = 2;
 	unsigned long T[50];
+
 	T[0] = 1;
 	T[1] = 2;
 
