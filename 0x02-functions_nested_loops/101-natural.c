@@ -1,6 +1,7 @@
 #include <stdio.h>
 /**
  * main - prints sum of multiples of 3 or 5 less than 1024
+ * Return: 0
  */
 int main(void)
 {
