@@ -1,25 +1,24 @@
 #include <stdio.h>
 /**
- * main - prints sum of even numbers in the fib series
+ * main - prints first fifty fib numbers
  * Return: 0
  */
 int main(void)
 {
 	int i;
-	unsigned long sumeven;
 	unsigned long T[50];
 	T[0] = 1;
 	T[1] = 2;
-	sumeven= T[1];
+	unsigned long sum = T[1];
 
-	for (i = 2; T[i] < 4000000; i++)
+	for (i = 2; i < 50; i++)
 	{
 		T[i] = T[i - 2] + T[i - 1];
-		if (T[i] % 2 == 0)
+		if (T[i] < 4000000 && T[i] % 2 == 0)
 		{
-			sumeven += T[i];
+			sum += T[i];
 		}
 	}
-	printf("%lu\n", sumeven);
+	printf("%lu\n", sum);
 	return (0);
 }
