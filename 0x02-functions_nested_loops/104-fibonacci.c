@@ -1,11 +1,14 @@
 #include <stdio.h>
 /**
  * main - prints 98 fibonacci numbers
+ * Return: 0
  */
 int main(void)
 {
 	int i;
+
 	long double T[98];
+
 	T[0] = 1.00000000;
 	T[1] = 2.00000000;
 
