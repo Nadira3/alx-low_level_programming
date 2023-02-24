@@ -1,11 +1,15 @@
 #include <stdio.h>
 #include <math.h>
 #define div 10000000000
+/**
+ * main - prints fibonacci numbers
+ */
 int main(void)
 {
 	int i;
 	unsigned long a, b, c, d, nexta, nextb;
 	unsigned long T[98];
+
 	T[0] = 1;
 	T[1] = 2;
 
