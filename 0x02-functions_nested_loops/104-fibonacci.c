@@ -3,6 +3,7 @@
 #define div 10000000000
 /**
  * main - prints fibonacci numbers
+ * Return: 0
  */
 int main(void)
 {
