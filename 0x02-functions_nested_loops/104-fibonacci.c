@@ -1,25 +1,44 @@
 #include <stdio.h>
-/**
- * main - prints 98 fibonacci numbers
- * Return: 0
- */
+#include <math.h>
+#define div 10000000000
 int main(void)
 {
 	int i;
+	unsigned long a, b, c, d, nexta, nextb;
+	unsigned long T[98];
+	T[0] = 1;
+	T[1] = 2;
 
-	long double T[98];
-
-	T[0] = 1.00000000;
-	T[1] = 2.00000000;
-
-	printf("%.0Lf, %.0Lf, ", T[0], T[1]);
+	printf("%lu, %lu, ", T[0], T[1]);
 	for (i = 2; i < 98; i++)
 	{
-		T[i] = T[i - 2] + T[i - 1];
-		if (i < 97)
-			printf("%.0Lf, ", T[i]);
-		else
-			printf("%.0Lf", T[i]);
+		if (i < 92)
+		{
+			T[i] = T[i - 2] + T[i - 1];
+			printf("%lu, ", T[i]);
+			if (i == 90)
+			{
+				a = T[i] / div;
+				b = T[i] % div;
+			}
+			if (i == 91)
+			{
+				c = T[i] / div;
+				d = T[i] % div;
+			}
+		}
+		if (i > 91)
+		{
+			nextb = (b + d) % div;
+			nexta = a + c + ((b + d) / div);
+			printf("%lu%lu", nexta, nextb);
+			if (i != 97)
+				printf(", ");
+			a = c;
+			b = d;
+			c = nexta;
+			d = nextb;
+		}
 	}
 	printf("\n");
 	return (0);
