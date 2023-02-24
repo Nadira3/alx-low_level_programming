@@ -1,4 +1,8 @@
 #include "main.h"
+/**
+ * print_line - prints a line
+ * @n: number
+ */
 void print_line(int n)
 {
 	int i;
