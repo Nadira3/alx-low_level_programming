@@ -1,22 +1,30 @@
-
-#include <stdio.h>
+#include "main.h"
+/**
+ * hash - puts #
+ * @n: number
+ */
 void hash(int n)
 {
 	int i;
-	for (i = 0; i < n; i++)
-		putchar('#');
-}
 
+	for (i = 0; i < n; i++)
+		_putchar('#');
+}
+/**
+ * print_triangle - prints a triangle
+ * @size: size of the triangle
+ */
 void print_triangle(int size)
 {
 	int i, j;
+
 	if (size <= 0)
-		putchar('\n');
+		_putchar('\n');
 	for (i = 1; i <= size; i++)
 	{
 		for (j = size - i - 1; j >= 0; j--)
-			putchar(' ');
+			_putchar(' ');
 		hash(i);
-		putchar('\n');
+		_putchar('\n');
 	}
 }
