@@ -1,4 +1,4 @@
-#include "mwin.h"
+#include "main.h"
 /**
  * print_numbers - prints numbers
  */
