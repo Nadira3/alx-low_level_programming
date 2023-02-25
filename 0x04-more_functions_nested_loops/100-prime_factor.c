@@ -1,11 +1,11 @@
 #include <stdio.h>
 #include <math.h>
+int isPrime(long n);
+
 /**
  * main - finds the largest prime factor of a number
  * Return: 0
  */
-int isPrime(long n);
-
 int main(void)
 {
 	long x, i, n = 612852475143;
@@ -19,7 +19,13 @@ int main(void)
 		}
 	}
 	printf("%ld\n", x);
+	return (0);
 }
+/**
+ * isPrime - checks if a factor is a prime number
+ * @n: number argument
+ * Return: 0 or 1
+ */
 int isPrime(long n)
 {
 	long i, count = 0;
