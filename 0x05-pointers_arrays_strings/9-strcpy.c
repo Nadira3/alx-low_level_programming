@@ -1,15 +1,14 @@
 #include "main.h"
 /**
- * rev_string - reverses a string and prints
+ * _strcpy - copies a string from source to destination
+ * @src: source string pointer
+ * @dest: destination buffer
+ * Return: pointer to destination
  */
 char *_strcpy(char *dest, char *src)
 {
 	int i; /*len_src = 0,len_dest = 0;*/
 
-	/**for (i = 0; src[i]; i++)
-		len_src++;
-	for (i = 0; dest[i]; i++)
-		len_dest++;*/
 	for (i = 0; src[i]; i++)
 	{
 		dest[i] = src[i];
