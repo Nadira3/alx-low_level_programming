@@ -12,7 +12,7 @@ void rev_string(char *s)
 		len++;
 	ptra = s;
 	ptrb = s + len - 1;
-	for (i = 0; i < (len - 1) / 2; i++)
+	for (i = 0; i <= (len - 1) / 2; i++)
 	{
 		ch = *ptra;
 		*ptra = *ptrb;
