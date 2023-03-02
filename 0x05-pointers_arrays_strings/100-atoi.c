@@ -7,8 +7,8 @@
  */
 int _atoi(char *s)
 {
-	int i,j, n = strlen(s), k = 0;
-	int collate[n];
+	int i, j, k = 0;
+	int collate[strlen(s)];
 	int INT[] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
 	unsigned int num = 0;
 
