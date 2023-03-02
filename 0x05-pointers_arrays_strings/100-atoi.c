@@ -8,8 +8,7 @@
 int _atoi(char *s)
 {
 	int i, j, k = 0;
-	const n = strlen(s);
-	int collate[n];
+	int collate[80];
 	int INT[] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
 	unsigned int num = 0;
 
