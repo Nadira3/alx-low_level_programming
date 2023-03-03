@@ -1,8 +1,8 @@
-#include "maim.h"
-/*
+#include "main.h"
+/**
  * print_number - prints a number using putchar
  * @n: numbe
- */r
+ */
 void print_number(int n)
 {
 	int i;
