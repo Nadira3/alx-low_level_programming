@@ -5,6 +5,7 @@
  */
 void print_number(int n)
 {
+	unsigned int m;
 	int i, j;
 	int num[80];
 
@@ -13,14 +14,17 @@ void print_number(int n)
 		n = -n;
 		_putchar('-');
 	}
-	if (n == 0)
+	m = n;
+	if (m == 0)
 		_putchar(48);
-	for (i = 0; n / 10; i++)
+	if (m > 0 && m < 10)
+		_putchar(m + '0');
+	for (i = 0; m / 10; i++)
 	{
-		num[i] = n % 10;
-		n /= 10;
-		if (n < 10)
-			_putchar(n + '0');
+		num[i] = m % 10;
+		m /= 10;
+		if (m < 10)
+			_putchar(m + '0');
 	}
 	for (j = i - 1; j >= 0; j--)
 	{
