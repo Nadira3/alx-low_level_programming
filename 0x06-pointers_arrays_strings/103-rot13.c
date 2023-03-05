@@ -10,7 +10,7 @@ char *rot13(char *s)
 
 	for (i = 0; s[i]; i++)
 	{
-		for (j = 1; isalpha(s[i]) && j; j++)
+		for (j = 1; ((s[i] > 64 && s[i] < 91) || (s[i] > 96 && s[i] < 123)) && j; j++)
 		{
 			if (s[i] < 78 || (s[i] < 110 && s[i] > 96))
 			{
