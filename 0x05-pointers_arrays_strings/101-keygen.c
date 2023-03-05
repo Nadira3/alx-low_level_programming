@@ -4,7 +4,7 @@
 int main(int argc, char *argv[])
 {
 	int j, r;
-	unsigned int seed;
+	int seed;
 
 	if (argc != 2) {
 		fprintf(stderr, "Usage: %s <seed>\n", argv[0]);
