@@ -6,22 +6,18 @@
  */
 char *rot13(char *str)
 {
-	int i;
-	/*char cap[26], small[26];
+	int i, j;
+	char a[] = "abcdefghijklmABCDEFGHIJKLMnopqrstuvwxyzNOPQRSTUVWXYZ";
 
-	for (i = 0; i < 26; i++)
-	{
-		cap[i] = cap;
-		cap++;
-		small[i] = small;
-		small++;
-	}*/
 	for (i = 0; str[i]; i++)
 	{
-		if ((str[i] > 64 && str[i] < 78) || (str[i] > 96 && str[i] < 110))
-			str[i] += 13;
-		else if ((str[i] > 77 && str[i] < 91) || (str[i] > 109 && str[i] < 123))
-			str[i] -= 13;
+		for (j = 0; a[j]; j++)
+		{
+			if (str[i] == a[j] && j < 26)
+				str[i] += str[i + 26];
+			else
+				str[i] -= 13;
+		}
 	}
 	return (str);
 }
