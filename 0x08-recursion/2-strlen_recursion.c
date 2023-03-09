@@ -2,6 +2,7 @@
 /**
  * _strlen_recursion - prints a string, followed by a new line
  * @s: string
+ * Return: int
  */
 int _strlen_recursion(char *s)
 {
