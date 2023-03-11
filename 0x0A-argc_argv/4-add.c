@@ -27,6 +27,12 @@ int main(int argc, char *argv[])
 	}
 	return (0);
 }
+/**
+ * _isdigit - checks if all the charcaters in an argument
+ * are digits
+ * @str: pointer to string
+ * Return: 1 || 0
+ */
 int _isdigit(char *str)
 {
 	while (*str)
