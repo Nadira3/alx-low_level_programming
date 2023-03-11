@@ -13,27 +13,21 @@ int main(int argc, char *argv[])
 		printf("Error\n");
 		return (1);
 	}
-	else
-	{
-		int coin[] = {25, 10, 5, 2, 1};
-		int i, change = 0, amt = atoi(argv[1]);
+	int coin[] = {25, 10, 5, 2, 1};
+	int i, change = 0, amt = atoi(argv[1]);
 
-		if (amt <= 0)
-			printf("%d\n", change);
-		else
+	if (amt <= 0)
+		printf("%d\n", change);
+	for (i = 0; amt > 0; i++)
+	{
+		while (amt >= coin[i])
 		{
-			for (i = 0; amt > 0; i++)
+			amt -= coin[i];
+			change++;
+			if (!(amt))
 			{
-				while (amt >= coin[i])
-				{
-					amt -= coin[i];
-					change++;
-					if (!(amt))
-					{
-						printf("%d\n", change);
-						return (0);
-					}
-				}
+				printf("%d\n", change);
+				return (0);
 			}
 		}
 	}
