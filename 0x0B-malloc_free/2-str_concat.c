@@ -21,9 +21,13 @@ char *str_concat(char *s1, char *s2)
 	s3 = malloc(sizeof(char) * total_len);
 	if (s3 == NULL)
 		return (NULL);
-	for (i = 0; i < len1; i++)
+	for (i = 0; i < len1 && s1[i]; i++)
 		s3[i] = s1[i];
-	for (j = 0; j < (len2 + 1); i++, j++)
+	for (j = 0; j < len2 && s2[j]; i++, j++)
+	{
+		if (s1 == NULL)
+			i = 0;
 		s3[i] = s2[j];
+	}
 	return (s3);
 }
