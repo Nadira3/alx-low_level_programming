@@ -23,12 +23,9 @@ char *str_concat(char *s1, char *s2)
 	if (s3 == NULL)
 		return (NULL);
 	ptr = s2;
-	for (i = 0; i < total_len; i++)
-	{
-		if (i < len1)
-			s3[i] = s1[i];
-		else
-			s3[i] = *ptr++;
-	}
+	for (i = 0; i < len1; i++)
+		s3[i] = s1[i];
+	for (j = 0; j < (len2 + 1); i++, j++)
+		s3[i] = s2[j];
 	return (s3);
 }
