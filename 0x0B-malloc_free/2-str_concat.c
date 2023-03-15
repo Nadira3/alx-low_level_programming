@@ -10,8 +10,6 @@ char *str_concat(char *s1, char *s2)
 	int i, j, len1, len2, total_len;
 	char *s3;
 
-	if (s1 == NULL && s2 == NULL)
-		return (NULL);
 	len1 = len2 = 0;
 	for (i = 0; s1 != NULL && s1[i]; i++)
 		len1++;
