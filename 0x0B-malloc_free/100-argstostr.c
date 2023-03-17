@@ -19,7 +19,7 @@ int _strlen(char *s)
 char *argstostr(int ac, char **av)
 {
 	char *str;
-	int i, j, str_len = 0, tot_len;
+	int i, j, str_len = 0, tot_len = 0;
 	int *av_len;
 
 	av_len = malloc(ac * sizeof(int));
