@@ -1,5 +1,4 @@
 #include "main.h"
-#include <stdio.h>
 /**
  * _strlen - finds the lenght of a string
  * @s: string
@@ -30,9 +29,9 @@ char *argstostr(int ac, char **av)
 	for (i = 0; i < ac; i++)
 	{
 		av_len[i] = _strlen(av[i]);
-		tot_len += av_len[i] + 1;
+		tot_len += av_len[i];
 	}
-	str = malloc(tot_len + ac + 1);
+	str = malloc(sizeof(char) * (tot_len + ac));
 	if (str == NULL)
 		return (NULL);
 	for (i = 0; i < ac; i++)
