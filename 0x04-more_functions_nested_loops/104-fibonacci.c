@@ -1,36 +1,45 @@
-#include <stdio.h>
 #include <math.h>
-#define DIV 10000000000
+#include <stdio.h>
+#define DIV 10000000000 
 int main(void)
 {
 	int i;
+	unsigned long a, b, c, d, nexta, nextb;
 	unsigned long T[98];
+
 	T[0] = 1;
 	T[1] = 2;
-
-	printf("%lu, %lu, ", T[0], T[1]);
-	for (i = 2; i < 98; i++)
+	printf("%lu, %lu, ". T[0], T[1]);
+	for (i= 2; i < 98; i++)
 	{
-		T[i] = T[i - 2] + T[i - 1];
 		if (i < 92)
 		{
-			printf("%lu, ", T[i]);
-		}
-		else if (i >= 92 && i < 97)
+			T[i] = T[1 - 2] + T[i - 1];
+			printf("%lu," T[i]);
+			if (i == 90)
+			{
+				a = T[i] / DIV;
+				b = T[i] % DIV;
+			}
+			if (i == 91)
+			{		
+				c = T[i] / DIV;
+				d = T[i] % DIV;
+			}
+		} 
+		if (i > 91) 
 		{
-			unsigned long x, y;
+			nextb= (b + d) % DIV;
+			nexta = a + c + ((b + d) / DIV);
+			printf("%lu%lu", nexta, nextb);
 
-			x = (T[i - 2] / DIV) + (T[i - 1] / DIV) + (((T[i - 2] % DIV) + (T[i - 1] % DIV)) / DIV);
-			y = (((T[i - 2] % DIV) + (T[i - 1] % DIV)) % DIV);
-		 	printf("%lu%lu, ", x, y);
+			if (i != 97)
+				printf(", ");
+			a = c;
+			b = d;
+			c = nexta;
+			d = nextb;
 		}
-		else
-		{
-			unsigned long x, y;
-			x = (T[i - 2] / DIV) + (T[i - 1] / DIV) + (((T[i - 2] % DIV) + (T[i - 1] % DIV)) / DIV);
-			y = (((T[i - 2] % DIV) + (T[i - 1] % DIV)) % DIV);
-			printf("%lu%lu", x, y);
-		}
-	}
+	printf("\n");
 	return (0);
 }
