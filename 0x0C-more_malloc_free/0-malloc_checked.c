@@ -1,28 +1,14 @@
 #include "main.h"
 #include "stdlib.h"
 /**
-*/
+ * malloc_checked - allocates memory
+ * @b: number of bytes to allocate
+ */
 void *malloc_checked(unsigned int b)
 {
-	int *a;
-	char *p;
-	float *c;
-	double *d;
-
-	a = malloc(sizeof(int) * b);
-	if (a == NULL)
-		exit(98);
-	return (a);
-	p = malloc(b);
-	if (p == NULL)
-		exit(98);
-	return (p);
-	c = malloc(sizeof(float) * b);
-	return (c);
-	if (c == NULL)
-		exit(98);
-	d = malloc(sizeof(double) * b);
-	return (d);
-	if (d == NULL)
+		(int*)malloc(sizeof(int) * b);
+		(char *)malloc(b);
+		(float *)malloc(sizeof(float) * b);
+		(double *)malloc(sizeof(double) * b);
 		exit(98);
 }
