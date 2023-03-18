@@ -1,6 +1,6 @@
 #include "main.h"
 /**
- * _string_nconcat - concatenates n bytes of source string
+ * string_nconcat - concatenates n bytes of source string
  * to destination string
  * @s1: destination
  * @s2: source
@@ -30,7 +30,7 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 			ptr[k] = s2[m];
 			m++;
 			continue;
-		}	
+		}
 		ptr[k] = s1[k];
 	}
 	ptr[k] = '\0';
