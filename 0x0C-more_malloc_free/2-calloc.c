@@ -17,7 +17,7 @@ void *_calloc(unsigned int nmemb, unsigned int size)
 	arr_size = nmemb * size;
 	if (arr_size > INT_MAX)
 		return (NULL);
-	ptr = malloc(sizeof(size) * nmemb);
+	ptr = malloc(sizeof(ptr) * arr_size);
 	if (ptr == NULL)
 		return (NULL);
 	int_ptr = (int *)ptr;
