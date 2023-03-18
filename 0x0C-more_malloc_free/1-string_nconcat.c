@@ -16,6 +16,10 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 		;
 	for (j = 0; j < n && s2[j]; ++j)
 		;
+	if (s1 == NULL)
+		i = 0;
+	if (s2 == NULL)
+		j = 0;
 	ptr = malloc(i + j + 1);
 	if (ptr == NULL)
 		return (NULL);
