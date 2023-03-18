@@ -12,14 +12,14 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	unsigned int i, j, k = 0, m = 0;
 	char *ptr;
 
-	for (i = 0; s1[i]; ++i)
-		;
-	for (j = 0; j < n && s2[j]; ++j)
-		;
 	if (s2 == NULL)
 		j = 0;
 	if (s1 == NULL)
 		i = 0;
+	for (i = 0; s1[i]; ++i)
+		;
+	for (j = 0; j < n && s2[j]; ++j)
+		;
 	ptr = malloc(i + j + 1);
 	if (ptr == NULL)
 		return (NULL);
