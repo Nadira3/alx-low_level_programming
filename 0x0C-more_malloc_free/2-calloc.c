@@ -1,6 +1,10 @@
 #include "main.h"
 #include <limits.h>
 /**
+ * calloc - allocate nmemb bytes for array elements
+ * @nmemb: no of array elements
+ * @size: size of array
+ * Return: pointer to array
  */
 void *_calloc(unsigned int nmemb, unsigned int size)
 {
