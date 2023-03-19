@@ -34,14 +34,12 @@ int findWords(char *str)
 		str++;
 	while (*str)
 	{
-		str_len++;
 		if (*str == ' ')
 			break;
+		str_len++;
 		str++;
 	}
-	if (*(str + 1) == '\0')
-		return (str_len + 1);
-	return (str_len);
+	return (str_len + 1);
 }
 /**
  * rstrchr - changes pointer to string to new position of a word
