@@ -39,6 +39,8 @@ int findWords(char *str)
 			break;
 		str++;
 	}
+	if (*(str + 1) == '\0')
+		return (str_len + 1);
 	return (str_len);
 }
 /**
@@ -46,6 +48,7 @@ int findWords(char *str)
  * @s: string
  * @c: character
  * @wordnum: word position
+ * Return: character pointer
  */
 char *rstrchr(char *s, char c, int wordnum)
 {
