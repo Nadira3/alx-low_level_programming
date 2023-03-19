@@ -9,13 +9,13 @@ int numWord(char *str)
 {
 	int num = 0;
 
-	if (*str == ' ')
+	if (*str != ' ')
 		num++;
 	while (*str == ' ')
 		str++;
 	while (*str)
 	{
-		if (*str == ' ' && *(str + 1) != ' ')
+		if (*(str - 1) == ' ' && *str != ' ')
 			num++;
 		str++;
 	}
@@ -46,22 +46,19 @@ int findWords(char *str)
  * @s: string
  * @c: character
  * @wordnum: word position
- * Return: pointer to character
  */
 char *rstrchr(char *s, char c, int wordnum)
 {
 	int count = 0;
 
-	if (*s != c)
+	if (*s != ' ')
 		count++;
 	while (*s)
 	{
-		if (*(s - 1) == c && *s != c)
+		if (*s == c && *(s + 1) != c)
 			count++;
 		if (count == wordnum)
-		{
-			return (s);
-		}
+			return (s + 1);
 		s++;
 	}
 	return (NULL);
@@ -85,6 +82,8 @@ char **strtow(char *str)
 	for (i = 0; i < wordnum; i++)
 	{
 		string = rstrchr(string, ' ', i + 1);
+		if (i == 0 && *str != ' ')
+			string = str;
 		ptr[i] = malloc(sizeof(char) * findWords(string));
 		if (ptr[i] == NULL)
 		{
