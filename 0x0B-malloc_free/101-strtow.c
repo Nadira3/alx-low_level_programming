@@ -71,7 +71,7 @@ char **strtow(char *str)
 	char *string = str;
 	int i, j, k, wordnum = numWord(str);
 
-	if (str == NULL || *str == '\0')
+	if (str == NULL || *str == '\0' || *str == ' ')
 		return (NULL);
 	ptr = malloc(sizeof(char *) * (wordnum + 1));
 	if (ptr == NULL)
