@@ -87,7 +87,7 @@ char **strtow(char *str)
 			free(ptr);
 			return (NULL);
 		}
-		k = findWords(string);
+		k = findWords(string) - 1;
 		for (j = 0; j < k; j++, string++)
 			ptr[i][j] = *string;
 		ptr[i][j] = '\0';
