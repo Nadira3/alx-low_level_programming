@@ -30,8 +30,26 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 	char_ptr = (char *)alloc;
 	if (new_size < old_size)
 	{
-		for (i = old_size; i > new_size; i--)
-			free(ptr[i]);
+		if (!(old_size % sizeof(int)))
+		{
+			int_ptr = (int *)ptr;
+			int_ptr = int_ptr + new_size;
+			while (*int_ptr)
+			{
+				free(int_ptr);
+				int_ptr++;
+			}
+		}
+		else
+		{
+			char_ptr = (char *)ptr;
+			char_ptr = char_ptr + new_size;
+			while (*char_ptr)
+			{
+				free(char_ptr);
+				char_ptr++;
+			}
+		}
 	}
 	if (new_size > old_size)
 	{
