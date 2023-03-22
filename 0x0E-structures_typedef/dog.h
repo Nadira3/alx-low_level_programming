@@ -1,14 +1,13 @@
 #ifndef DOG_H
 #define DOG_H
+#include <stddef.h>
+#include <stdio.h>
 /**
  * struct dog - has three elements
  * @name: name of dog
  * @age: age of dog
  * @owner: name of dog's owner
  */
-#include <stddef.h>
-#include <stdio.h>
-#include <math.h>
 struct dog
 {
 	char *name;
