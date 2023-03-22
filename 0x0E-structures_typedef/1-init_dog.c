@@ -8,11 +8,11 @@
  */
 void init_dog(struct dog *d, char *name, float age, char *owner)
 {
-	struct dog *gee = d;
+	struct dog *gee;
 
-	if (name != NULL)
-		gee->name = name;
+	if (d != NULL)
+		gee = d;
+	gee->name = name;
 	gee->age = age;
-	if (owner != NULL)
-		gee->owner = owner;
+	gee->owner = owner;
 }
