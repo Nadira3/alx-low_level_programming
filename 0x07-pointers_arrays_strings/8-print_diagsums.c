@@ -9,19 +9,15 @@
 void print_diagsums(int *a, int size)
 {
 	int i;
-	unsigned long sum_a, sum_b;
+	long int sum_a = 0, sum_b = 0;
 	int *ptr = a;
 
 	for (i = 0; i < size; i++)
 	{
-		sum_a += *ptr;
-		ptr = ptr + (size + 1);
+		sum_a += *(ptr + (size * i) + i);
+		sum_b += *(ptr + ((i + 1) * (size - 1))); 
+		printf("%ld, %ld\n", sum_a, sum_b);
 	}
-	ptr = a + size - 1;
-	for (i = 0; i < size; i++)
-	{
-		sum_b += *ptr;
-		ptr = ptr + (size - 1);
-	}
-	printf("%lu, %lu\n", sum_a, sum_b);
+	printf("\n");
+	/*printf("%ld, %ld\n", sum_a, sum_b);*/
 }
