@@ -11,21 +11,23 @@ int _strlen(char *str);
 char *_strcpy(char *dest, char *src);
 dog_t *new_dog(char *name, float age, char *owner)
 {
-	dog_t new_dog = {name, age, owner};
-	char *new_name;
-	char *new_owner;
-
-	new_name = malloc(_strlen(name) + 1);
-	if (new_name == NULL)
+	dog_t *new_dog;
+	
+	new_dog = (dog_t *)malloc(sizeof(dog_t));
+	if (new_dog == NULL)
+		return (NULL);
+	new_dog->name = malloc(_strlen(name) + 1);
+	if (new_dog->name == NULL)
 		return (NULL);
 	else
-		_strcpy(new_name, name);
-	new_owner = malloc(_strlen(owner) + 1);
-	if (new_owner == NULL)
+		_strcpy(new_dog->name, name);
+	new_dog->age = age;
+	new_dog->owner = malloc(_strlen(owner) + 1);
+	if (new_dog->owner == NULL)
 		return (NULL);
 	else
-		_strcpy(new_owner, owner);
-	return (new_dog == NULL ? NULL : new_dog);
+		_strcpy(new_dog->owner, owner);
+	return (new_dog);
 }
 /**
  * _strlen - finds the lenght of a string
@@ -37,7 +39,7 @@ int _strlen(char *str)
 	if (!(*str))
 		return (0);
 	else
-		return (1 + _strlen(str));
+		return (1 + _strlen(str + 1));
 }
 /**
  * _strcpy - copies the contents of src to dest
