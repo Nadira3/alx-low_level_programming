@@ -1,30 +1,42 @@
 #include "dog.h"
 #include <stddef.h>
 #include <stdlib.h>
-/**
- * dog_t new_dog - structure type
- * @name: name of dog
- * age: age of dog
- * @owner: name of owner
- */
 int _strlen(char *str);
 char *_strcpy(char *dest, char *src);
+/**
+ * new_dog - structure type
+ * @name: name of dog
+ * @age: age of dog
+ * @owner: name of owner
+ * Return: new_dog structure
+ */
 dog_t *new_dog(char *name, float age, char *owner)
 {
 	dog_t *new_dog;
-	
+
 	new_dog = (dog_t *)malloc(sizeof(dog_t));
 	if (new_dog == NULL)
+	{
 		return (NULL);
+		free(new_dog);
+	}
 	new_dog->name = malloc(_strlen(name) + 1);
 	if (new_dog->name == NULL)
+	{
 		return (NULL);
+		free(new_dog->name);
+		free(new_dog);
+	}
 	else
 		_strcpy(new_dog->name, name);
 	new_dog->age = age;
 	new_dog->owner = malloc(_strlen(owner) + 1);
 	if (new_dog->owner == NULL)
+	{
 		return (NULL);
+		free(new_dog->owner);
+		free(new_dog);
+	}
 	else
 		_strcpy(new_dog->owner, owner);
 	return (new_dog);
