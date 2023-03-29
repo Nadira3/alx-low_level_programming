@@ -23,5 +23,6 @@ int main(int argc, char *argv[])
 		exit(100);
 	}
 	result = fptr(atoi(argv[1]), atoi(argv[3]));
-	return (result);
+	printf("%d\n", result);
+	return (0);
 }
