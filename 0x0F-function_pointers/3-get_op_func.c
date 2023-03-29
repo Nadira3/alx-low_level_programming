@@ -2,6 +2,7 @@
 /**
  * get_op_func - determines which arithmetic operation is carried out
  * @s: operator
+ * Return: funtion pointer
  */
 int (*get_op_func(char *s))(int a, int b)
 {

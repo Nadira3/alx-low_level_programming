@@ -1,6 +1,12 @@
 #include <stdio.h>
 #include "3-calc.h"
 #include <stdlib.h>
+/**
+ * main - performs arithmetic on two argunenta
+ * @argc: argunent count
+ * @argv: argument variables
+ * Return: result of arithmetic operation
+ */
 int main(int argc, char *argv[])
 {
 	int (*fptr)(int, int);
