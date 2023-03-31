@@ -10,13 +10,11 @@ void print_numbers(const char *separator, const unsigned int n, ...)
 	unsigned int i;
 	const char *ptr = separator;
 
-	if (separator == NULL)
-		return;
 	va_start(params, n);
 	for (i = 0; i < n; i++)
 	{
 		printf("%d", va_arg(params, int));
-		if (i < (n - 1))
+		if (i < (n - 1) && ptr)
 		{
 			while (*ptr)
 				printf("%c", *ptr++);
