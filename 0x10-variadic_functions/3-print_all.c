@@ -55,15 +55,10 @@ void print_all(const char * const format, ...)
 	while (format[i])
 	{
 		fptr = get_format(&format[i]);
-		if (fptr && i < (strlen(format) - 1))
+		if (fptr)
 		{
 			fptr(pam);
-			printf(", ");
-		}
-		if (fptr && i == (strlen(format) - 1))
-		{
-			fptr(pam);
-			printf("\n");
+			i < (strlen(format) - 1) ? printf(", ") : printf("\n");
 		}
 		i++;
 	}
