@@ -1,15 +1,4 @@
 #include "variadic_functions.h"
-#include <string.h>
-typedef struct op
-{
-    char *format;
-    void (*f)(va_list pam);
-} form_t;
-/**
- * print_strings - prints string arguments
- * @separator: number separator
- * @n: number of arguments
- */
 void printchar(va_list pam)
 {
 	printf("%c", va_arg(pam, int));
@@ -24,7 +13,7 @@ void printfloat(va_list pam)
 }
 void printstring(va_list pam)
 {
-	printf("%s", va_arg(pam, char*));
+	printf("%s", va_arg(pam, char*) ? va_arg(pam, char*) : "(nil)");
 }
 form_t forms[] = {
         {"c", printchar},
@@ -45,10 +34,15 @@ void (*get_format(const char * const s))(va_list pam)
 	}
 	return (forms[i].f);
 }
+/**
+ * print_strings - prints string arguments
+ * @separator: number separator
+ * @n: number of arguments
+ */
 void print_all(const char * const format, ...)
 {
 	va_list pam;
-	unsigned int i = 0;
+	unsigned int i = 0, n = strlen(format);
 	void (*fptr)(va_list pam);
 
 	va_start(pam, format);
@@ -56,11 +50,10 @@ void print_all(const char * const format, ...)
 	{
 		fptr = get_format(&format[i]);
 		if (fptr)
-		{
 			fptr(pam);
-			i < (strlen(format) - 1) ? printf(", ") : printf("\n");
-		}
+		printf("%s", (i < n - 1) && fptr ? ", " : "");
 		i++;
 	}
+	printf("\n");
 	va_end(pam);
 }
