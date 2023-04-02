@@ -13,7 +13,7 @@ void printfloat(va_list pam)
 }
 void printstring(va_list pam)
 {
-	printf("%s", va_arg(pam, char*) != NULL ? va_arg(pam, char*) : "(nil)");
+	printf("%s", va_arg(pam, char*));
 }
 form_t forms[] = {
         {"c", printchar},
