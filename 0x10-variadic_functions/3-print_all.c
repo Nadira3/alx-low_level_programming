@@ -29,7 +29,9 @@ void printfloat(va_list pam)
  */
 void printstring(va_list pam)
 {
-	printf("%s", va_arg(pam, char*));
+	char *ptr =  va_arg(pam, char*);
+
+	printf("%s", ptr ? ptr : "(nil)");
 }
 /**
  * get_format - finds the format specifier of a variable
