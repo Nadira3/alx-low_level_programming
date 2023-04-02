@@ -1,5 +1,13 @@
 #include "variadic_functions.h"
 /**
+ * printchar - prints a character
+ * @pam: variable list
+ */
+void printchar(va_list pam)
+{
+	printf("%c", va_arg(pam, int));
+}
+/**
  * printint - prints an integer
  * @pam: variable list
  */
@@ -32,13 +40,13 @@ void (*get_format(const char * const s))(va_list pam)
 {
 	unsigned int i = 0;
 
-form_t forms[] = {
-	{"c", printint},
-	{"i", printint},
-	{"f", printfloat},
-	{"s", printstring},
-	{NULL, NULL}
-};
+	form_t forms[] = {
+		{"c", printchar},
+		{"i", printint},
+		{"f", printfloat},
+		{"s", printstring},
+		{NULL, NULL}
+	};
 	while (*(forms[i].f))
 	{
 		if (*(forms[i].format) == *s)
@@ -58,8 +66,8 @@ void print_all(const char * const format, ...)
 	void (*fptr)(va_list pam);
 
 	va_start(pam, format);
-	n = strlen(format);
-	while (format[i] && format)
+	n = format ? strlen(format) : 0;
+	while (format && format[i])
 	{
 		fptr = get_format(&format[i]);
 		if (fptr)
