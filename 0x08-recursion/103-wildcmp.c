@@ -39,13 +39,38 @@ int wildcmp(char *s1, char *s2)
 	if (*s2 == '*' && _strlen(s2) == 1) /* checks if s2 == "*" */
 		return (1);
 	if (!*s1 && !*s2)
-		return (1);
+/** 
+ * checks if s1 & s2 both point to null
+ * signifying the end of both strings
+ *
+ * Description: returns 1 if true
+ */
+		return (1);  /**
+			       * returns 1 bcos both strings have matched all
+			       * previous characters till the end
+			       *
+			       * Decsription: shows that strings matcched
+			      */
 	if (*s2 == '*')
 	/* checks if s2 is * in the middle or start of a string */
 	{
 		if (*s1 == *s2 || *s1 != '\0')
+/**
+ * checks if the corresponding s1 character matches
+ * the s2 character or s1 is not null
+ *
+ * Decsription: returns 1
+ */
 		{
 			if (wildcmp(s1, s2 + 1) || wildcmp(s1 + 1, s2))
+/**
+ * checks if the current s1 character matches the character after the wild
+ * xter till the end of the string i.e, if the current s1 character does
+ * not match it tries to match the next character in the s1 string that
+ * matches the current s2 character
+ *
+ * Decaription: returns 1 if true
+ */
 			{
 				return (1);
 			}
