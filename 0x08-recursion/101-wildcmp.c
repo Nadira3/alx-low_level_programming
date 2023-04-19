@@ -28,7 +28,7 @@ int wildcmp(char *s1, char *s2)
 {
         int wild;
 
-        if (*s2 == '*')
+        if (*s2 == '*' || !*s1)
         {
                 if (wildfirst(s1, s2 + 1))
                 {
