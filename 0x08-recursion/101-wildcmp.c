@@ -3,7 +3,7 @@ int wildfirst(char *s, char *t)
 {
         if (!*s)
                 return (0);
-        if (*s == *t || *(s + 1) == *t || *s == '')
+        if (*s == *t || *(s + 1) == *t || *s == "")
                 return (1);
         return wildfirst(s + 1, t);
 }
