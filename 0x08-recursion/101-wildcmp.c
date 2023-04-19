@@ -28,7 +28,7 @@ int _strlen(char *s)
 	return (1 + _strlen(s + 1));
 /* increments the length by once with every true evaluation of s */
 }
-/*
+/**
  * wildcmp - checks if two strings match
  * @s1: first string
  * @s2: second string
@@ -40,19 +40,29 @@ int wildcmp(char *s1, char *s2)
 		return (1);
 	if (!*s1 && !*s2)
 /**
- * checks if s1 & s2 both point to null 
- * signifying the end of both strings */
-		return (1); /* returns 1 bcos both strings have matched all
-			       previous characters till the end */
-	if (*s2 == '*') 
+ * checks if s1 & s2 both point to null
+ * signifying the end of both strings
+ */
+		return (1); /**
+			      * returns 1 bcos both strings have matched all
+			      * previous characters till the end
+			      */
+	if (*s2 == '*')
 	/* checks if s2 is * in the middle or start of a string */
 	{
 		if (*s1 == *s2 || *s1 != '\0')
-/* checks if the corresponding s1 character matches
- * the s2 character or s1 is not null */
+/**
+ * checks if the corresponding s1 character matches
+ * the s2 character or s1 is not null
+ */
 		{
 			if (wildcmp(s1, s2 + 1) || wildcmp(s1 + 1, s2))
-/* checks if the current s1 character matches the character after the wild xter till the end of the string i.e, if tge current s1 character does not match it tries to match the next character in the s1 string that matches the current s2 character */
+/**
+ * checks if the current s1 character matches the character after the wild
+ * xter till the end of the string i.e, if the current s1 character does
+ * not match it tries to match the next character in the s1 string that
+ * matches the current s2 character
+ */
 			{
 				return (1);
 			}
