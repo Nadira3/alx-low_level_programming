@@ -11,6 +11,7 @@
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 {
 	void *ptr_new;
+	char *p_new;
 
 	if (new_size == old_size)
 		return (ptr);
@@ -42,8 +43,9 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 			}
 			if (new_size > old_size)
 			{
+				p_new = ptr_new;
 				dup(ptr, ptr_new);
-				zero_init(ptr_new + old_size, new_size - old_size);
+				zero_init(p_new + old_size, new_size - old_size);
 			}
 			else
 				dupn(ptr, ptr_new, old_size);
