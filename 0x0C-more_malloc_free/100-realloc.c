@@ -6,18 +6,17 @@
  * @t: new memory
  * Return: character pointer
  */
-char *dup(char *s, char *t)
+void *dup(char *s, char *t)
 {
 	if (!*s)
 	{
-		*t = '\0';
-		return (t);
+		return;
 	}
 	if (*s)
 		*t = *s;
 	s++;
 	t++;
-	return dup(s, t);
+	dup(s, t);
 
 }
 /**
@@ -28,7 +27,7 @@ char *dup(char *s, char *t)
  */
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 {
-	char *ptr_new;
+	void *ptr_new;
 
 	if (new_size == old_size)
 		return (ptr);
