@@ -20,6 +20,29 @@ void dup(char *s, char *t)
 
 }
 /**
+ * dup - copies content of one memory block to another
+ * @s: old memory
+ * @t: new memory
+ * @size: number of bytes to be copied
+ * Return: character pointer
+ */
+void dupn(char *s, char *t, int size)
+{
+	if (size == 0)
+	{
+		return;
+	}
+	if (*s)
+	{
+		*t = *s;
+		size--;
+	}
+	s++;
+	t++;
+	dupn(s, t, size);
+
+}
+/**
  * _realloc - reallocates a memory block using malloc and free
  * @ptr: pointer to the memory previously allocated
  * @old_size: size, in bytes, of the allocated space for ptr
@@ -31,16 +54,32 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 
 	if (new_size == old_size)
 		return (ptr);
-	ptr_new = malloc(new_size);
-	if (new_size <= 0)
+	if (!ptr)
 	{
-		free(ptr);
-		return (0);
+		ptr_new = malloc(new_size);
+		if (!ptr_new)
+			free(ptr_new);
+		return (ptr_new);
 	}
-	if (!ptr_new)
-		free(ptr_new);
-	if (ptr_new)
-		dup(ptr, ptr_new);
+	else
+	{
+		if (new_size <= 0)
+		{
+			free(ptr);
+			return (0);
+		}
+		else
+		{
+			ptr_new = malloc(new_size);
+			if (!ptr_new)
+				free(ptr_new);
+			if (new_size > old_size)
+				dup(ptr, ptr_new);
+			else
+				dupn(ptr, ptr_new, old_size);
+
+		}
+	}
 	free(ptr);
 	return (ptr_new);
 }
