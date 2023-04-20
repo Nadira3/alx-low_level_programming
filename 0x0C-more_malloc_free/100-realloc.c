@@ -11,7 +11,6 @@
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 {
 	void *ptr_new;
-	char *p_new;
 
 	if (new_size == old_size)
 		return (ptr);
@@ -42,11 +41,7 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 				return (0);
 			}
 			if (new_size > old_size)
-			{
-				p_new = ptr_new;
 				dup(ptr, ptr_new);
-				zero_init(p_new + old_size, new_size - old_size);
-			}
 			else
 				dupn(ptr, ptr_new, old_size);
 
@@ -87,16 +82,4 @@ void dupn(char *s, char *t, int size)
 	t++;
 	dupn(s, t, size - 1);
 
-}
-/**
- * zero_init - initializes memory to zero
- * @ptr: pointer
- * @size: number of bytes to initialize
- */
-void zero_init(char *ptr, int size)
-{
-	if (size == 0)
-		return;
-	*ptr = 0;
-	zero_init(ptr + 1, size - 1);
 }
