@@ -6,7 +6,7 @@
  * @t: new memory
  * Return: character pointer
  */
-void *dup(char *s, char *t)
+void dup(char *s, char *t)
 {
 	if (!*s)
 	{
