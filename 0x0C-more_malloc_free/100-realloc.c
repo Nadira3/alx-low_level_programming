@@ -1,7 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
-void dup(char *s, char *t);
-void dupn(char *s, char *t, int size);
+#include "main.h"
 /**
  * _realloc - reallocates a memory block using malloc and free
  * @ptr: pointer to the memory previously allocated
