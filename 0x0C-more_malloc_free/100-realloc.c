@@ -1,76 +1,76 @@
-#include "main.h"
-/**
- * _realloc - reallocates a block of memory
- * @ptr: pointer to the memory previously allocated with a 
- * call to malloc: malloc(old_size)
- * @old_size: size, in bytes, of the allocated space for ptr
- * @new_size: size in bytes of the new memory block
- */
+#include <stdlib.h>
+#include <stdio.h>
+char *dup(char *s, char *t)
+{
+	if (!*s)
+	{
+		*t = '\0';
+		return (t);
+	}
+	if (*s)
+		*t = *s;
+	s++;
+	t++;
+	return dup(s, t);
+
+}
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 {
-	unsigned int i;
-	void *alloc;
-	int *int_ptr;
-	char *char_ptr;
+	char *ptr_new;
 
-	if (ptr == NULL || new_size > old_size)
-	{
-		alloc = malloc(new_size);
-		if (alloc == NULL)
-			return (NULL);
-	}
-	if (new_size == 0)
-	{
-		free(ptr);
-		return (NULL);
-	}
 	if (new_size == old_size)
 		return (ptr);
-	int_ptr = (int *)alloc;
-	char_ptr = (char *)alloc;
-	if (new_size < old_size)
+	ptr_new = malloc(new_size);
+	if (!ptr_new)
+		free(ptr_new);
+	if (new_size <= 0)
 	{
-		if (!(old_size % sizeof(int)))
-		{
-			int_ptr = (int *)ptr;
-			int_ptr = int_ptr + new_size;
-			while (*int_ptr)
-			{
-				free(int_ptr);
-				int_ptr++;
-			}
-		}
-		else
-		{
-			char_ptr = (char *)ptr;
-			char_ptr = char_ptr + new_size;
-			while (*char_ptr)
-			{
-				free(char_ptr);
-				char_ptr++;
-			}
-		}
+		free(ptr);
+		return (0);
 	}
-	if (new_size > old_size)
-	{
-		for (i = 0; i < old_size; i++)
-		{
-			if (!(old_size % sizeof(int)))
-				int_ptr[i] = 0;
-			else
-				char_ptr[i] = 0;
-		}
-	}
-	else
-	{
-		for (i = 0; i < new_size; i++)
-		{
-			if (!(old_size % sizeof(int)))
-				int_ptr[i] = 0;
-			else
-				char_ptr[i] = 0;
-		}
-	}
+	dup(ptr, ptr_new);
 	free(ptr);
-	return (alloc);
+	return (ptr_new);
+}
+void simple_print_buffer(char *buffer, unsigned int size)
+{
+    unsigned int i;
+
+    i = 0;
+    while (i < size)
+    {
+        if (i % 10)
+        {
+            printf(" ");
+        }
+        if (!(i % 10) && i)
+        {
+            printf("\n");
+        }
+        printf("0x%02x", buffer[i]);
+        i++;
+    }
+    printf("\n");
+}
+
+/**
+ * main - check the code for
+ *
+ * Return: Always 0.
+ */
+int main(void)
+{
+    char *p;
+    int i;
+
+    p = malloc(sizeof(char) * 10);
+    p = _realloc(p, sizeof(char) * 10, sizeof(char) * 98);
+    i = 0;
+    while (i < 98)
+    {
+        p[i++] = 98;
+    }
+    simple_print_buffer(p, 98);
+    free(p);
+    return (0);
 }
