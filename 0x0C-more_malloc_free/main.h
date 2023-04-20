@@ -9,4 +9,5 @@ int *array_range(int min, int max);
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 void dup(char *s, char *t);
 void dupn(char *s, char *t, int size);
+void zero_init(char *ptr, int size);
 #endif
