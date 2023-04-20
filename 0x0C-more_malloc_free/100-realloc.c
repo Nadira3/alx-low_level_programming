@@ -18,7 +18,10 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 	{
 		ptr_new = malloc(new_size);
 		if (!ptr_new)
+		{
 			free(ptr_new);
+			return (0);
+		}
 		free(ptr);
 		return (ptr_new);
 	}
@@ -33,7 +36,10 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 		{
 			ptr_new = malloc(new_size);
 			if (!ptr_new)
+			{
 				free(ptr_new);
+				return (0);
+			}
 			if (new_size > old_size)
 				dup(ptr, ptr_new);
 			else
@@ -41,7 +47,8 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 
 		}
 	}
-	free(ptr);
+	if (ptr)
+		free(ptr);
 	return (ptr_new);
 }
 /**
@@ -53,9 +60,7 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 void dup(char *s, char *t)
 {
 	if (!*s)
-	{
 		return;
-	}
 	if (*s)
 		*t = *s;
 	s++;
@@ -72,16 +77,11 @@ void dup(char *s, char *t)
 void dupn(char *s, char *t, int size)
 {
 	if (size == 0)
-	{
 		return;
-	}
 	if (*s)
-	{
 		*t = *s;
-		size--;
-	}
 	s++;
 	t++;
-	dupn(s, t, size);
+	dupn(s, t, size - 1);
 
 }
