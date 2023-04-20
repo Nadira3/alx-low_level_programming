@@ -1,47 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
-/**
- * dup - copies content of one memory block to another
- * @s: old memory
- * @t: new memory
- * Return: character pointer
- */
-void dup(char *s, char *t)
-{
-	if (!*s)
-	{
-		return;
-	}
-	if (*s)
-		*t = *s;
-	s++;
-	t++;
-	dup(s, t);
-
-}
-/**
- * dupn - copies content of one memory block to another
- * @s: old memory
- * @t: new memory
- * @size: number of bytes to be copied
- * Return: character pointer
- */
-void dupn(char *s, char *t, int size)
-{
-	if (size == 0)
-	{
-		return;
-	}
-	if (*s)
-	{
-		*t = *s;
-		size--;
-	}
-	s++;
-	t++;
-	dupn(s, t, size);
-
-}
+void dup(char *s, char *t);
+void dupn(char *s, char *t, int size);
 /**
  * _realloc - reallocates a memory block using malloc and free
  * @ptr: pointer to the memory previously allocated
@@ -84,4 +44,45 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 	}
 	free(ptr);
 	return (ptr_new);
+}
+/**
+ * dup - copies content of one memory block to another
+ * @s: old memory
+ * @t: new memory
+ * Return: character pointer
+ */
+void dup(char *s, char *t)
+{
+	if (!*s)
+	{
+		return;
+	}
+	if (*s)
+		*t = *s;
+	s++;
+	t++;
+	dup(s, t);
+}
+/**
+ * dupn - copies content of one memory block to another
+ * @s: old memory
+ * @t: new memory
+ * @size: number of bytes to be copied
+ * Return: character pointer
+ */
+void dupn(char *s, char *t, int size)
+{
+	if (size == 0)
+	{
+		return;
+	}
+	if (*s)
+	{
+		*t = *s;
+		size--;
+	}
+	s++;
+	t++;
+	dupn(s, t, size);
+
 }
