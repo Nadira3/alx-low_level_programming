@@ -55,6 +55,8 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
  * dup - copies content of one memory block to another
  * @s: old memory
  * @t: new memory
+ * @old_size: size of old memory
+ * @new_size: size of new memory
  */
 void dup(char *s, char *t, int old_size, int new_size)
 {
