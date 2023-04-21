@@ -41,7 +41,7 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 				return (0);
 			}
 			if (new_size > old_size)
-				dup(ptr, ptr_new);
+				dup(ptr, ptr_new, old_size, new_size);
 			else
 				dupn(ptr, ptr_new, old_size);
 
@@ -56,15 +56,18 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
  * @s: old memory
  * @t: new memory
  */
-void dup(char *s, char *t)
+void dup(char *s, char *t, int old_size, int new_size)
 {
-	if (!*s)
-		return;
-	if (*s)
-		*t = *s;
-	s++;
-	t++;
-	dup(s, t);
+	int i = 0;
+
+	while (i < new_size)
+	{
+		if (i < old_size)
+			*t = *s;
+		else
+			*t = 0;
+		i++;
+	}
 }
 /**
  * dupn - copies content of one memory block to another
