@@ -21,6 +21,7 @@ size_t listint_len(const listint_t *h)
 /**
  * del_listint_other - deletes a node from a list at any position
  * @head: pointer to a list pointer
+ * @index: position number of node to be deleted starting from zero
  * Return: value in head node
  */
 void del_listint_other(listint_t *head, unsigned int index)
@@ -72,16 +73,24 @@ void del_listint_beg(listint_t *head)
  */
 int delete_nodeint_at_index(listint_t **head, unsigned int index)
 {
+	listint_t *temp = NULL;
+
+	temp = *head;
 	if (head)
 	{
 		if (*head)
 		{
-			if (index == 0)
+			if (index >= listint_len(*head))
+				return (-1);
+			if (index == 0 && listint_len(*head) > 1)
 				del_listint_beg(*head);
+			else if (index == 0 && !(listint_len(*head)))
+			{
+				free(temp->next);
+				temp->next = NULL;
+			}
 			else if (index == listint_len(*head) - 1)
 				del_listint_end(*head);
-			else if (index >= listint_len(*head))
-				return (-1);
 			else
 				del_listint_other(*head, index);
 		}
