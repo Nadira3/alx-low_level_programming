@@ -5,7 +5,7 @@
  * @y: power
  * Return: int
  */
-int _pow(int x, int y)
+unsigned long int _pow(int x, unsigned long int y)
 {
 	if (y == 0)
 		return (1);
@@ -24,7 +24,7 @@ void print_binary(unsigned long int n)
 	{
 		putchar('0');
 		return;
-	}	
+	}
 	while (1)
 	{
 		bg = _pow(2, num);
