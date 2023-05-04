@@ -17,7 +17,7 @@ int _pow(int x, int y)
  */
 void print_binary(unsigned long int n)
 {
-	int num = 0, start, bg;
+	unsigned long int num = 0, start, bg;
 
 	if (n == 0)
 	{
