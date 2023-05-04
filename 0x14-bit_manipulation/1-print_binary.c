@@ -19,6 +19,7 @@ void print_binary(unsigned long int n)
 {
 	unsigned long int num = 0, start, bg;
 
+	n = (long int)n < 0 ? -n : n;
 	if (n == 0)
 	{
 		putchar('0');
