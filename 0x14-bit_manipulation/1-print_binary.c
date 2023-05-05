@@ -12,21 +12,6 @@ unsigned long int _pow(int x, unsigned long int y)
 	return (x * _pow(x, y - 1));
 }
 /**
- * bit - finds the binary of a number
- * @n: number
- */
-void bit(unsigned long int n)
-{
-	int i, num_bits = sizeof(unsigned long int) * 8;
-	unsigned long int mask = 1UL << (num_bits - 1);
-
-	for (i = 0; i < num_bits; i++)
-	{
-		putchar((n & mask) ? '1' : '0');
-		n <<= 1;
-	}
-}
-/**
  * findStart - finds the binary of a number
  * @n: number
  * Return: unsigned long int
@@ -56,11 +41,6 @@ void print_binary(unsigned long int n)
 	unsigned long int num = 0, start;
 
 	n = (long int)n < 0 ? -n : n;
-	if (n > INT_MAX)
-	{
-		bit(n);
-		return;
-	}
 	if (n == 0)
 	{
 		putchar('0');
