@@ -50,8 +50,6 @@ int set_bit(unsigned long int *n, unsigned int index)
 	 */
 	unsigned long int bit;
 
-	if (index < 0)
-		return (-1);
 	for (i = bit_len - 1; i >= 0; i--)
 	{
 		bit = (*n >> i) & 1;
