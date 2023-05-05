@@ -12,19 +12,29 @@ unsigned long int _pow(int x, unsigned long int y)
 	return (x * _pow(x, y - 1));
 }
 /**
- * print_binary - converts an integer to binary
- * @n: number to be converted
+ * bit - finds the binary of a number
+ * @n: number
  */
-void print_binary(unsigned long int n)
+void bit(unsigned long int n)
+{
+	int i, num_bits = sizeof(unsigned long int) * 8;
+	unsigned long int mask = 1UL << (num_bits - 1);
+
+	for (i = 0; i < num_bits; i++)
+	{
+		putchar((n & mask) ? '1' : '0');
+		n <<= 1;
+	}
+}
+/**
+ * findStart - finds the binary of a number
+ * @n: number
+ * Return: unsigned long int
+ */
+unsigned long int findStart(unsigned long int n)
 {
 	unsigned long int num = 0, start, bg;
 
-	n = (long int)n < 0 ? -n : n;
-	if (n == 0)
-	{
-		putchar('0');
-		return;
-	}
 	while (1)
 	{
 		bg = _pow(2, num);
@@ -35,6 +45,28 @@ void print_binary(unsigned long int n)
 		}
 		num++;
 	}
+	return (start);
+}
+/**
+ * print_binary - converts an integer to binary
+ * @n: number to be converted
+ */
+void print_binary(unsigned long int n)
+{
+	unsigned long int num = 0, start, bg;
+
+	if (n > INT_MAX)
+	{
+		bit(n);
+		return;
+	}
+	n = (long int)n < 0 ? -n : n;
+	if (n == 0)
+	{
+		putchar('0');
+		return;
+	}
+	start = findStart(n);
 	while (n > 0)
 	{
 		num = _pow(2, start);
