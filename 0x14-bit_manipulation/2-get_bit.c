@@ -1,5 +1,9 @@
 #include "main.h"
 /**
+ * get_bit - gets bit value at index
+ * @index: position of bit value
+ * @n: number
+ * Return: bit value
  */
 int get_bit(unsigned long int n, unsigned int index)
 {
