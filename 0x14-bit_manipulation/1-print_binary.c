@@ -7,7 +7,7 @@ void print_binary(unsigned long int n)
 {
 	unsigned long int bit_len = sizeof(n) * 8;
 	/* finds the no of bits of n by multiplying its size by 8 bytes */
-	int flag = 0;
+	int i, flag = 0;
 	/**
 	 * declare a flag to detect when the most significant bit in a binary
 	 * is found, to prompt printing to standard output with necessary
@@ -15,7 +15,7 @@ void print_binary(unsigned long int n)
 	 */
 	unsigned long int bit;
 
-	for (int i = bit_len - 1; i >= 0; i--)
+	for (i = bit_len - 1; i >= 0; i--)
 	{
 		bit = (n >> i) & 1;
 		/**
