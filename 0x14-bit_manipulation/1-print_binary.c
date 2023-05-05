@@ -53,7 +53,7 @@ unsigned long int findStart(unsigned long int n)
  */
 void print_binary(unsigned long int n)
 {
-	unsigned long int num = 0, start, bg;
+	unsigned long int num = 0, start;
 
 	if (n > INT_MAX)
 	{
