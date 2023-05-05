@@ -1,73 +1,36 @@
 #include "main.h"
 /**
- * _pow - finds the power of a number
- * @x: number
- * @y: power
- * Return: int
- */
-unsigned long int _pow(int x, unsigned long int y)
-{
-	if (y == 0)
-		return (1);
-	return (x * _pow(x, y - 1));
-}
-/**
- * findStart - finds the binary of a number
+ * print_binary - prints thr binary representation of a number
  * @n: number
- * Return: unsigned long int
- */
-unsigned long int findStart(unsigned long int n)
-{
-	unsigned long int num = 0, start, bg;
-
-	while (1)
-	{
-		bg = _pow(2, num);
-		if (n <= bg)
-		{
-			start = n < bg ? --num : num;
-			break;
-		}
-		num++;
-	}
-	return (start);
-}
-/**
- * print_binary - converts an integer to binary
- * @n: number to be converted
  */
 void print_binary(unsigned long int n)
 {
-	unsigned long int num = 0, start;
+	unsigned long int bit_len = sizeof(n) * 8;
+	/* finds the no of bits of n by multiplying its size by 8 bytes */
+	int flag = 0;
+	/**
+	 * declare a flag to detect when the most significant bit in a binary
+	 * is found, to prompt printing to standard output with necessary
+	 * condition
+	 */
+	unsigned long int bit;
 
-	n = (long int)n < 0 ? -n : n;
-	if (n == 0)
+	for (int i = bit_len - 1; i >= 0; i--)
 	{
+		bit = (n >> i) & 1;
+		/**
+		 * within the loop, shift the binary forn of the integer
+		 * i times to get the value of the right most bit and compare
+		 * it with a constant value of 1 using the & bitwise operator
+		 * and assign the value to bit
+		 */
+		if (bit == 1 || flag == 1)
+		{
+			putchar(bit ? '1' : '0');
+			flag = 1;
+		}
+	}
+	if (!flag)/* if flag is unset no true value was found and n is 0 */
 		putchar('0');
-		return;
-	}
-	start = findStart(n);
-	while (n > 0)
-	{
-		num = _pow(2, start);
-		if (n >= num)
-		{
-			putchar('1');
-			n -= num;
-		}
-		else
-			putchar('0');
-		start--;
-	}
-	if (num != 1)
-	{
-		while (num > 1)
-		{
-			num -= _pow(2, start);
-			putchar('0');
-			start--;
-		}
-
-	}
-
 }
+
