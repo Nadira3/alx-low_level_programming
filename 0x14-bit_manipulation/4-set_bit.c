@@ -14,12 +14,12 @@ int _pow(int x, int y)
 /**
  * convert_n_to_int - converts binary to integer
  * @b: pointer to string of numbers
- * @b_size: size of b
  * Return: unsigned integer
  */
-unsigned long int convert_n_to_int(int *b, unsigned long int b_size)
+unsigned long int convert_n_to_int(int *b, int b_size)
 {
-	unsigned long int bin = 0, i = 0, power, num;
+	int i = 0, power, num;
+	unsigned long int bin = 0;
 
 	if (!b)
 		return (0);
@@ -33,16 +33,14 @@ unsigned long int convert_n_to_int(int *b, unsigned long int b_size)
 	return (bin);
 }
 /**
- * set_bit - sets the bit of a decimal at index to 1
+ * print_binary - prints thr binary representation of a number
  * @n: number
- * @index: position of bit to be set starting from 0
- * Return: 1 if successful || -1 otherwise
  */
 int set_bit(unsigned long int *n, unsigned int index)
 {
-	unsigned long int bit_len = sizeof(*n) * 8, j = 0;
+	unsigned long int bit_len = sizeof(*n) * 8;
 	/* finds the no of bits of n by multiplying its size by 8 bytes */
-	int i, bin_arr[64];
+	int i, flag = 0, j = 0, bin_arr[64];
 	/**
 	 * declare a flag to detect when the most significant bit in a binary
 	 * is found, to prompt printing to standard output with necessary
@@ -50,8 +48,6 @@ int set_bit(unsigned long int *n, unsigned int index)
 	 */
 	unsigned long int bit;
 
-	if (index < 0)
-		return (-1);
 	for (i = bit_len - 1; i >= 0; i--)
 	{
 		bit = (*n >> i) & 1;
@@ -61,9 +57,13 @@ int set_bit(unsigned long int *n, unsigned int index)
 		 * it with a constant value of 1 using the & bitwise operator
 		 * and assign the value to bit
 		 */
-			bin_arr[j] = j == bit_len - 1 - index ? 1 : bit ? 1 : 0;
+		if (bit == 1 || flag == 1)
+		{
+			bin_arr[j] = j == (int)index ? 1 : bit ? 1 : 0;
 			j++;
+			flag = 1;
+		}
 	}
-	*n = convert_n_to_int(bin_arr, bit_len);
-	return (index > j - 1 ? -1 : 1);
+	*n = convert_n_to_int(bin_arr, j);
+	return ((int)index > j - 1 ? -1 : 1);
 }
