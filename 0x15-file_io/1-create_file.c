@@ -19,15 +19,14 @@ int _strlen(char *text)
  */
 int create_file(const char *filename, char *text_content)
 {
-	int n, len = _strlen(text_content);
+	int n, len = text_content ? _strlen(text_content) : 0;
 
 	if (!filename)
 		return (-1);
 	n = open(filename, O_WRONLY | O_CREAT | O_TRUNC, 0600);
 	if (n == -1)
 		return (n);
-	if (text_content)
-		write(n, text_content, len);
+	write(n, text_content, len);
 	close(n);
 	return (1);
 }
