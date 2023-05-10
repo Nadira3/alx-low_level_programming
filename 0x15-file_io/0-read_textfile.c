@@ -19,17 +19,17 @@ ssize_t read_textfile(const char *filename, size_t letters)
 		ptr = malloc(BUFSIZ);
 		if (!ptr)
 			return (0);
-		while (total_bytes <= letters)
+		while (total_bytes < letters)
 		{
-			n_byte = read(n, ptr, letters);
+			n_byte = read(n, ptr, letters - total_bytes);
+			if (n_byte == 0)
+				break;
 			total_bytes += n_byte;
-			letters -= n_byte;
 			write(STDOUT_FILENO, ptr, n_byte);
-			if (!letters || !n_byte)
-				return (total_bytes);
 		}
 		free(ptr);
 		close(n);
 	}
-	return (0);
+	return (total_bytes);
 }
+
