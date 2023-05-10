@@ -21,6 +21,8 @@ int create_file(const char *filename, char *text_content)
 {
 	int n, len = _strlen(text_content);
 
+	if (!filename)
+		return (-1);
 	n = open(filename, O_WRONLY | O_CREAT | O_TRUNC, 0600);
 	if (n == -1)
 		return (n);
