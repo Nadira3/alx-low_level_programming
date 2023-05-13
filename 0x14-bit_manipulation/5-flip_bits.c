@@ -31,7 +31,7 @@ unsigned int flip_bits(unsigned long int n, unsigned long int m)
 		if (bit_n != bit_m)
 		{
 			bit_m = bit_n;
-			flag++;	
+			flag++;
 		}
 	}
 	return (flag);
