@@ -18,8 +18,9 @@ int _strlen(char *text)
  */
 int main(int ac, const char **av)
 {
-	int n_one, n_two, ca, cb, n_byte = 0, total_bytes = 0;
+	int n_one, n_two, ca, cb, n_byte;
 	char *ptr;
+	mode_t filePerms;
 
 	if (ac != 3)
 	{
@@ -35,25 +36,17 @@ int main(int ac, const char **av)
 	ptr = malloc(BUFSIZ);
 	if (!ptr)
 		return (-1);
-	n_two = open(av[2], O_WRONLY | O_TRUNC | O_CREAT, 0664);
+	filePerms = S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH;
+	n_two = open(av[2], O_CREAT | O_WRONLY | O_TRUNC, filePerms);
 	if (n_two == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", av[2]);
 		exit(99);
 	}
-	if (chmod(av[2], 0644) == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't set file permission for %s\n", av[2]);
-		exit(100);
-	}
-	while (n_byte != EOF)
-	{
-		n_byte = read(n_one, ptr, BUFSIZ - total_bytes);
-		if (n_byte == 0)
-			break;	
-		total_bytes += n_byte;
-	}
-	write(n_two, ptr, total_bytes);
+	while ((n_byte = read(n_one, ptr, BUFSIZ)) > 0)
+		write(n_two, ptr, n_byte);
+	if (n_byte == -1)
+		return (-1);
 	ca = close(n_one);
 	cb = close(n_two);
 	if (ca == -1 || cb == -1)
