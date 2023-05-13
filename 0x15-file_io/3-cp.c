@@ -55,5 +55,5 @@ int main(int ac, const char **av)
 		exit(100);
 	}
 	free(ptr);
-	return (1);
+	return (0);
 }
