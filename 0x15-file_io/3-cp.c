@@ -1,16 +1,5 @@
 #include "main.h"
 /**
- * _strlen - finds the length of a string
- * @text: string argument
- * Return: length of string
- */
-int _strlen(char *text)
-{
-	if (!*text)
-		return (0);
-	return (1 + _strlen(text + 1));
-}
-/**
  * main - entry point of the program
  * @ac: argument count starting from zero
  * @av: list of argument variables
@@ -18,9 +7,8 @@ int _strlen(char *text)
  */
 int main(int ac, const char **av)
 {
-	int n_one, n_two, ca, cb, n_byte;
+	int n_one, n_two, ca, cb, n_byte, n_write;
 	char *ptr;
-	mode_t filePerms;
 
 	if (ac != 3)
 	{
@@ -36,17 +24,20 @@ int main(int ac, const char **av)
 	ptr = malloc(BUFSIZ);
 	if (!ptr)
 		return (-1);
-	filePerms = S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH;
-	n_two = open(av[2], O_CREAT | O_WRONLY | O_TRUNC, filePerms);
+	n_two = open(av[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
 	if (n_two == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", av[2]);
 		exit(99);
 	}
 	while ((n_byte = read(n_one, ptr, BUFSIZ)) > 0)
-		write(n_two, ptr, n_byte);
+	{
+		n_write = write(n_two, ptr, n_byte);
+		if (n_write == -1)
+			exit(99);
+	}
 	if (n_byte == -1)
-		return (-1);
+		exit(98);
 	ca = close(n_one);
 	cb = close(n_two);
 	if (ca == -1 || cb == -1)
