@@ -23,7 +23,7 @@ int main(int ac, const char **av)
 
 	if (ac != 3)
 	{
-		dprintf(STDOUT_FILENO, "Usage: cp file_from file_to\n");
+		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
 		exit(97);
 	}
 	n_one = open(av[1], O_RDONLY);
@@ -32,29 +32,33 @@ int main(int ac, const char **av)
 		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", av[1]);
 		exit(98);
 	}
-	ptr = malloc(BUFSIZE);
+	ptr = malloc(BUFSIZ);
 	if (!ptr)
 		return (-1);
-
-	n_two = open(av[2], O_WRONLY | O_CREAT | O_TRUNC, 0664);
+	n_two = open(av[2], O_WRONLY | O_TRUNC | O_CREAT, 0664);
 	if (n_two == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", av[2]);
 		exit(99);
 	}
-	while (n_one != EOF)
+	if (chmod(av[2], 0644) == -1)
 	{
-		n_byte = read(n_one, ptr, BUFSIZE - total_bytes);
-		if (n_byte == 0)
-			break;
-		total_bytes += n_byte;
-		write(n_two, ptr, n_byte);
+		dprintf(STDERR_FILENO, "Error: Can't set file permission for %s\n", av[2]);
+		exit(100);
 	}
+	while (n_byte != EOF)
+	{
+		n_byte = read(n_one, ptr, BUFSIZ - total_bytes);
+		if (n_byte == 0)
+			break;	
+		total_bytes += n_byte;
+	}
+	write(n_two, ptr, total_bytes);
 	ca = close(n_one);
 	cb = close(n_two);
 	if (ca == -1 || cb == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd FD_VALUE %i\n", ca == -1 ? ca : cb);
+		dprintf(STDERR_FILENO, "Error: Can't close fd %i\n", ca == -1 ? ca : cb);
 		exit(100);
 	}
 	free(ptr);
