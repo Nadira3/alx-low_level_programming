@@ -1,7 +1,6 @@
-#include <main.h>
+#include "main.h"
 void print_buffer(char *b, int size)
 {
-	char *str = "This is a string..";
 	int i, j = 0, k = 1;
 
 	if (size <= 0)
@@ -16,7 +15,7 @@ void print_buffer(char *b, int size)
 		printf("%.8x: ", k);
 		for (j = 0; j < 10 && k + j < size; j = j + 2)
 		{
-			printf("%.2x", b[k + j];
+			printf("%.2x", b[k + j]);
 			printf("%.2x ", b[k + j + 1]);
 		}
 		for (j = 0; j < 10 && k + j < size; j++)

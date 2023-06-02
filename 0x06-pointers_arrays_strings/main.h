@@ -1,8 +1,9 @@
 #ifndef MAIN_H
 #define MAIN_H
+#include <stdio.h>
+void print_buffer(char *b, int size);
 int _putchar(int);
 char *_strcat(char *dest, char *src);
-void print_buffer(char *b, int size);
 char *_strncat(char *dest, char *src, int n);
 char *_strncpy(char *dest, char *src, int n);
 int _strcmp(char *s1, char *s2);
