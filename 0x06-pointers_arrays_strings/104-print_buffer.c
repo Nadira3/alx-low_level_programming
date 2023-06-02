@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include <main.h>
 void print_buffer(char *b, int size)
 {
 	char *str = "This is a string..";
