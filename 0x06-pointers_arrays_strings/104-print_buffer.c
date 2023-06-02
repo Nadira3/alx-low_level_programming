@@ -21,12 +21,13 @@ void print_buffer(char *b, int size)
 		for (j = 0; j < 10; j = j + 2)
 		{
 			if (k + j > size - 1)
-			{
-				printf("     ");
-				continue;
-			}
-			printf("%.2x", b[k + j]);
-			printf("%.2x ", b[k + j + 1]);
+				printf("  ");
+			else
+				printf("%.2x", b[k + j]);
+			if (k + j >= size - 1)
+				printf("   ");
+			else
+				printf("%.2x ", b[k + j + 1]);
 		}
 		for (j = 0; j < 10 && k + j < size; j++)
 		{
