@@ -1,4 +1,9 @@
 #include "main.h"
+/**
+ * print_buffer - prints charactera from a buffer
+ * @b: buffer
+ * @size: size of buffer
+ */
 void print_buffer(char *b, int size)
 {
 	int i, j = 0, k = 1;
@@ -9,12 +14,17 @@ void print_buffer(char *b, int size)
 		return;
 	}
 
-	for (i = 0; i <= size / 10; i++)
+	for (i = 0; size % 10 ?  i <= size / 10 : i < size / 10; i++)
 	{
-		k = j*i;
+		k = j * i;
 		printf("%.8x: ", k);
-		for (j = 0; j < 10 && k + j < size; j = j + 2)
+		for (j = 0; j < 10; j = j + 2)
 		{
+			if (k + j > size - 1)
+			{
+				printf("     ");
+				continue;
+			}
 			printf("%.2x", b[k + j]);
 			printf("%.2x ", b[k + j + 1]);
 		}
