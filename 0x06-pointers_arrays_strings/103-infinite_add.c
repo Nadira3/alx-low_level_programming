@@ -34,9 +34,12 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 		c = (num % SIZE) + '0';
 		if (!i && !j)
 		{
-			r[k--] = c;
+			r[k] = c;
 			if (rem)
+			{
+				k--;
 				r[k] = rem + '0';
+			}
 			return (&(r[k]));
 		}
 		r[k--] = c;
