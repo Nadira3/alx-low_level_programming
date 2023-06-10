@@ -8,13 +8,6 @@
  * @size_r: size of r
  * Return: r
  */
-void buf_init(char *r, int size)
-{
-	int i = 0;
-
-	while (i < size)
-		r[i++] = '\0';
-}
 char *infinite_add(char *n1, char *n2, char *r, int size_r)
 {
 	int len1, len2, i, j, rem = 0, k = size_r - 2, num;
@@ -27,9 +20,9 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 	len2 = strlen(n2);
 	if (len1 > size_r - 1 || len2 > size_r - 1)
 		return (0);
-	buf_init(r, size_r);
-	i = len1--;
-	j = len2--;
+	r[size_r - 1] = '\0';
+	i = --len1;
+	j = --len2;
 	while (k >= 0)
 	{
 		s[0] = i >= 0 ? num1[i] : '0';
