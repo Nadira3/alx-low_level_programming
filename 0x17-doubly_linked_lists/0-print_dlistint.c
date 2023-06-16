@@ -21,5 +21,5 @@ size_t print_dlistint(const dlistint_t *h)
 		}
 		printf("%d\n", ptr->n);
 	}
-	return (len + 1);
+	return (h ? len + 1 : len);
 }
