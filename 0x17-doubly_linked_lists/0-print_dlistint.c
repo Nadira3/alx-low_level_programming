@@ -7,7 +7,7 @@
  */
 size_t print_dlistint(const dlistint_t *h)
 {
-	size_t len = 1;
+	size_t len = 0;
 	const dlistint_t *ptr;
 
 	if (h)
@@ -21,5 +21,5 @@ size_t print_dlistint(const dlistint_t *h)
 		}
 		printf("%d\n", ptr->n);
 	}
-	return (len);
+	return (len + 1);
 }
