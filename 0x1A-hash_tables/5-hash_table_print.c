@@ -42,8 +42,10 @@ void hash_table_print(const hash_table_t *ht)
 				{
 					printf("\'%s\': \'%s\'", ptr->key, ptr->value);
 					ptr = ptr->next;
+					if (ptr && !is_empty(ht, i + 1))
+						printf(", ");
 				}
-				if (!ptr && !is_empty(ht, i + 1))
+				if (!is_empty(ht, i + 1))
 					printf(", ");
 			}
 		}
