@@ -1,4 +1,10 @@
 #include "hash_tables.h"
+/**
+ * create_node - creates a new node
+ * @key: hash key for new node
+ * @value: value for new node
+ * Return: new node
+ */
 hash_node_t *create_node(const char *key, const char *value)
 {
 	hash_node_t *node = malloc(sizeof(hash_node_t));
@@ -24,6 +30,12 @@ hash_node_t *create_node(const char *key, const char *value)
 	return (node);
 }
 
+/**
+ * hash_table_set - inserts a node in a table
+ * @key: hash key for new node
+ * @value: value for new node
+ * Return: 1 if sucessful || 0 otherwise
+ */
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
 	hash_node_t *newNode = NULL, *ptr = NULL;
@@ -50,11 +62,13 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 					ptr = ptr->next;
 				}
 				ptr = ht->array[idx];
-				
+
 				key_copy = strdup(ptr->key);
 				value_copy = strdup(ptr->value);
 				strcpy(ptr->key, key);
 				strcpy(ptr->value, value);
+				if (ptr->next)
+					newNode->next = ptr->next;
 				ptr->next = newNode;
 				strcpy(newNode->key, key_copy);
 				strcpy(newNode->value, value_copy);
