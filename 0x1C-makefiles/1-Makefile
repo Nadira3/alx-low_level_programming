@@ -1,7 +1,7 @@
-SRCS = main.c school.c
+SRC = main.c school.c
 CC = gcc
 
 all : prog
 
-prog : $(SRCS) m.h
-	$(CC) $(SRCS) -o school
+prog : $(SRC) m.h
+	$(CC) $(SRC) -o school
