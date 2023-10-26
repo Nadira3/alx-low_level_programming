@@ -2,7 +2,7 @@ SRC = main.c school.c
 CC = gcc
 NAME = school
 OBJ = main.o school.o
-RM = main.c school.c main.o school.o
+RM = rm -f
 
 all : prog
 
@@ -10,10 +10,10 @@ prog : $(OBJ)
 	$(CC) $(OBJ) -o $(NAME)
 
 clean :
-	rm -f *.~ $(NAME)
+	$(RM) *.~ $(NAME)
 
 oclean :
-	rm -f $(OBJ)
+	$(RM) $(OBJ)
 
 fclean : clean oclean
 
