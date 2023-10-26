@@ -10,7 +10,7 @@ prog : $(OBJ)
 	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
 
 clean :
-	rm -f *.~ $(NAME)
+	rm -f *~ $(NAME)
 
 oclean : clean $(OBJ)
 
