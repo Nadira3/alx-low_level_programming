@@ -28,7 +28,7 @@ def is_land(row, row_num, grid):
         if row[i]:
             if not row_num or row_num == len(grid) - 1:
                 perimeter += 1
- 
+
             if not i or i == lenr - 1:
                 perimeter += 1
 
