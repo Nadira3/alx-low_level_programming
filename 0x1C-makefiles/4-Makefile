@@ -1,8 +1,8 @@
 SRC = main.c school.c
 CC = gcc
 NAME = school
-OBJ = main.o school.o
 RM = rm -f
+OBJ = $(SRC:.c=.o)
 CFLAGS = -Wall -Werror -Wextra -pedantic
 
 all : prog
