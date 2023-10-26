@@ -2,27 +2,49 @@
 """ island perimeter module """
 
 
-def perimeter(length, breadth):
-    """
-        arithmetic formulation of perimeter
-        of a rectangle
-    """
-    return 2 * (length + breadth)
+def next_row_free(row, row_num, grid, i):
+    """ checks if the next row in the grid is free """
+    if row_num < len(grid) - 1:
+        next_row = grid[row_num + 1]
+        if not next_row[i]:
+            return True
 
 
-def is_land(row, row_num):
+def prev_row_free(row, row_num, grid, i):
+    """ checks if the prev row in the grid is free """
+    if row_num:
+        next_row = grid[row_num - 1]
+        if not next_row[i]:
+            return True
+
+
+def is_land(row, row_num, grid):
     """
         checks if an area is land or water
     """
-    length = 0
-    breadth = 0
-    for i in range(len(row)):
-        if (not row_num and row[i]) or (i and row[i - 1] and row[i]):
-            breadth += 1
-        if row[i] and not breadth:
-            length += 1
-            breadth += 1 if i < len(row) - 2 and row[i + 1] else 0
-    return (length, breadth)
+    perimeter = 0
+    lenr = len(row)
+    for i in range(lenr):
+        if row[i]:
+            if not row_num or row_num == len(grid) - 1:
+                perimeter += 1
+ 
+            if not i or i == lenr - 1:
+                perimeter += 1
+
+            if i and not row[i - 1]:
+                perimeter += 1
+
+            if lenr > 1 and i and i < lenr - 2:
+                if not row[i + 1]:
+                    perimeter += 1
+
+            if prev_row_free(row, row_num, grid, i):
+                perimeter += 1
+
+            if next_row_free(row, row_num, grid, i):
+                perimeter += 1
+    return perimeter
 
 
 def island_perimeter(grid):
@@ -35,12 +57,8 @@ def island_perimeter(grid):
         Grid is rectangular, width and height don’t exceed 100
     """
     i = 0
-    length = 0
-    breadth = 0
+    perimeter = 0
     for row in grid:
-        tup = is_land(row, i)
-        length += tup[0]
-        breadth += tup[1]
+        perimeter += is_land(row, i, grid)
         i += 1
-    breadth = length if length == 1 else breadth
-    return perimeter(length, breadth)
+    return perimeter
