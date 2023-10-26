@@ -5,11 +5,7 @@ OBJ = main.o school.o
 
 all : prog
 
-school.o : school.c m.h
-	$(CC) -c school.c
-
-main.o : main.c m.h
-	$(CC) -c main.c
-
 prog : $(OBJ)
+	$(CC) -Qunused-arguments -c -o main.c main.o
+	$(CC) -Qunused-arguments -c -o school.c school.o
 	$(CC) $(OBJ) -o $(NAME)
