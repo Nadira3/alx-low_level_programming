@@ -6,10 +6,7 @@ CFLAGS = -Wall -Werror -Wextra -pedantic
 
 all : prog
 
-prog :  ifdef ERROR1
-$(error m.h is missing)
-endif
-	$(OBJ)
+prog : $(OBJ)
 	$(CC) $(OBJ) -o $(NAME)
 
 .PHONY : clean oclean fclean
