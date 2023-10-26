@@ -9,6 +9,8 @@ all : prog
 prog : $(OBJ)
 	$(CC) $(OBJ) -o $(NAME)
 
+.PHONY : clean oclean fclean
+
 clean :
 	$(RM) -f *~ $(NAME)
 
